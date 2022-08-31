@@ -3,7 +3,8 @@ import 'package:flutter_app_7_bmi_calculator/BMI_result.dart';
 
 const InactiveColor = Colors.white70;
 const ActiveColor = Colors.lightGreen;
-enum Gender{Male,Female}
+
+enum Gender { Male, Female }
 
 class BMIcalculator extends StatefulWidget {
   const BMIcalculator({Key? key}) : super(key: key);
@@ -13,12 +14,11 @@ class BMIcalculator extends StatefulWidget {
 }
 
 class _BMIcalculatorState extends State<BMIcalculator> {
-
   Color MaleCardColor = InactiveColor;
   Color FemaleCardColor = InactiveColor;
 
   void UpdateColor(Gender selectedgender) {
-    if (selectedgender==Gender.Male) {
+    if (selectedgender == Gender.Male) {
       if (MaleCardColor == InactiveColor) {
         MaleCardColor = ActiveColor;
         FemaleCardColor = InactiveColor;
@@ -26,7 +26,7 @@ class _BMIcalculatorState extends State<BMIcalculator> {
         MaleCardColor = InactiveColor;
       }
     }
-    if (selectedgender==Gender.Female) {
+    if (selectedgender == Gender.Female) {
       if (FemaleCardColor == InactiveColor) {
         FemaleCardColor = ActiveColor;
         MaleCardColor = InactiveColor;
@@ -38,7 +38,7 @@ class _BMIcalculatorState extends State<BMIcalculator> {
 
   int age = 25;
   int height = 158;
-  int weight = 78;
+  int weight = 128;
 
   @override
   Widget build(BuildContext context) {
@@ -188,23 +188,37 @@ class _BMIcalculatorState extends State<BMIcalculator> {
                     ),
                     Row(
                       children: [
-                        Text(
-                          '$age',
-                          style: TextStyle(
-                            color: Color.fromRGBO(255, 255, 255, 1),
-                            fontSize: 50,
+                        SizedBox(
+                          child: Text(
+                            '$age',
+                            style: TextStyle(
+                              color: Color.fromRGBO(255, 255, 255, 1),
+                              fontSize: 50,
+                              fontWeight: FontWeight.w900,
+                            ),
                           ),
+                          width: 60,
+                          height: 50,
                         ),
                         SizedBox(
-                          width: 10,
+                          width: 5,
                         ),
                         Column(
                           children: [
-                            arrowUPward(),
-                            SizedBox(
-                              height: 5,
+                            arrowUPward(
+                              onPress: () {
+                                setState(() {
+                                  age++;
+                                });
+                              },
                             ),
-                            arrowDOWNward(),
+                            arrowDOWNward(
+                              onPress: () {
+                                setState(() {
+                                  age--;
+                                });
+                              },
+                            ),
                           ],
                         )
                       ],
@@ -213,7 +227,7 @@ class _BMIcalculatorState extends State<BMIcalculator> {
                 ),
               ),
               SizedBox(
-                height: 30,
+                height: 20,
               ),
               const Divider(
                 color: Color.fromRGBO(255, 255, 255, 0.5),
@@ -242,23 +256,47 @@ class _BMIcalculatorState extends State<BMIcalculator> {
                         ),
                         Row(
                           children: [
+                            SizedBox(
+                              child: Text(
+                                '$height',
+                                style: TextStyle(
+                                  color: Color.fromRGBO(255, 255, 255, 1),
+                                  fontSize: 50,
+                                  fontWeight: FontWeight.w900,
+                                ),
+                              ),
+                              height: 50,
+                              width: 85,
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
                             Text(
-                              '$height',
+                              'cm',
                               style: TextStyle(
-                                color: Color.fromRGBO(255, 255, 255, 1),
-                                fontSize: 50,
+                                fontSize: 20,
+                                color: Colors.white,
                               ),
                             ),
                             SizedBox(
-                              width: 10,
+                              width: 5,
                             ),
                             Column(
                               children: [
-                                arrowUPward(),
-                                SizedBox(
-                                  height: 5,
+                                arrowUPward(
+                                  onPress: () {
+                                    setState(() {
+                                      height++;
+                                    });
+                                  },
                                 ),
-                                arrowDOWNward(),
+                                arrowDOWNward(
+                                  onPress: () {
+                                    setState(() {
+                                      height--;
+                                    });
+                                  },
+                                ),
                               ],
                             )
                           ],
@@ -267,7 +305,7 @@ class _BMIcalculatorState extends State<BMIcalculator> {
                     ),
                   ),
                   SizedBox(
-                    width: 40,
+                    width: 2,
                   ),
                   Container(
                     child: Column(
@@ -286,23 +324,47 @@ class _BMIcalculatorState extends State<BMIcalculator> {
                         ),
                         Row(
                           children: [
+                            SizedBox(
+                              child: Text(
+                                '$weight',
+                                style: TextStyle(
+                                  color: Color.fromRGBO(255, 255, 255, 1),
+                                  fontSize: 50,
+                                  fontWeight: FontWeight.w900,
+                                ),
+                              ),
+                              width: 85,
+                              height: 50,
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
                             Text(
-                              '$weight',
+                              'kg',
                               style: TextStyle(
-                                color: Color.fromRGBO(255, 255, 255, 1),
-                                fontSize: 50,
+                                fontSize: 20,
+                                color: Colors.white,
                               ),
                             ),
                             SizedBox(
-                              width: 10,
+                              width: 5,
                             ),
                             Column(
                               children: [
-                                arrowUPward(),
-                                SizedBox(
-                                  height: 5,
+                                arrowUPward(
+                                  onPress: () {
+                                    setState(() {
+                                      weight++;
+                                    });
+                                  },
                                 ),
-                                arrowDOWNward(),
+                                arrowDOWNward(
+                                  onPress: () {
+                                    setState(() {
+                                      weight--;
+                                    });
+                                  },
+                                ),
                               ],
                             )
                           ],
@@ -313,7 +375,7 @@ class _BMIcalculatorState extends State<BMIcalculator> {
                 ],
               ),
               SizedBox(
-                height: 80,
+                height: 30,
               ),
               Container(
                 width: double.infinity,
@@ -353,42 +415,40 @@ class _BMIcalculatorState extends State<BMIcalculator> {
 }
 
 class arrowDOWNward extends StatelessWidget {
-  const arrowDOWNward({
-    Key? key,
-  }) : super(key: key);
+  arrowDOWNward({ required this.onPress});
+
+  final VoidCallback  onPress;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 20,
-      height: 20,
-      decoration: BoxDecoration(
-        color: Colors.lightGreen,
-        shape: BoxShape.circle,
-      ),
+    return ElevatedButton(
+      onPressed: onPress,
       child: Icon(
         Icons.arrow_downward_rounded,
-        size: 15,
         color: Colors.white,
+      ),
+      style: ElevatedButton.styleFrom(
+        shape: CircleBorder(),
       ),
     );
   }
 }
 
 class arrowUPward extends StatelessWidget {
+  arrowUPward({ required this.onPress});
+
+  final VoidCallback  onPress;
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 20,
-      height: 20,
-      decoration: BoxDecoration(
-        color: Colors.lightGreen,
-        shape: BoxShape.circle,
-      ),
+    return ElevatedButton(
+      onPressed: onPress,
       child: Icon(
         Icons.arrow_upward_rounded,
-        size: 15,
         color: Colors.white,
+      ),
+      style: ElevatedButton.styleFrom(
+        shape: CircleBorder(),
       ),
     );
   }
