@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_7_bmi_calculator/BMI_result.dart';
+import 'CalcU.dart';
 
 const InactiveColor = Colors.white70;
 const ActiveColor = Colors.lightGreen;
@@ -382,12 +383,15 @@ class _BMIcalculatorState extends State<BMIcalculator> {
                 height: 50,
                 child: ElevatedButton(
                   onPressed: () {
+                    Calculator Calc =
+                        Calculator(Height: height, Weight: weight);
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) {
-                          return BMIresult();
-                        },
+                        builder: (context) => BMIresult(
+                          BMIf: Calc.CalculateBMI(),
+                          Textf: Calc.getResult(),
+                        ),
                       ),
                     );
                   },
@@ -415,9 +419,9 @@ class _BMIcalculatorState extends State<BMIcalculator> {
 }
 
 class arrowDOWNward extends StatelessWidget {
-  arrowDOWNward({ required this.onPress});
+  arrowDOWNward({required this.onPress});
 
-  final VoidCallback  onPress;
+  final VoidCallback onPress;
 
   @override
   Widget build(BuildContext context) {
@@ -435,9 +439,9 @@ class arrowDOWNward extends StatelessWidget {
 }
 
 class arrowUPward extends StatelessWidget {
-  arrowUPward({ required this.onPress});
+  arrowUPward({required this.onPress});
 
-  final VoidCallback  onPress;
+  final VoidCallback onPress;
 
   @override
   Widget build(BuildContext context) {
